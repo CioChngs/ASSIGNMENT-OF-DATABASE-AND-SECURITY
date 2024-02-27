@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Cart</h1>
+    <ul>
+        {% for item in cart %}
+        <li class="cart-item">
+            {{ item.name }} - ${{ item.price }} - Quantity: {{ item.quantity }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p id="total-price">Total Price: ${{ total_price }}</p>
+    <form action="/place_order" method="post">
+        <button type="submit">Place Order</button>
+    </form>
+    <a href="/">Back to Menu</a>
+</body>
+</html>

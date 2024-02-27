@@ -1,0 +1,81 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Menu styles */
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+form {
+    display: inline-block;
+}
+
+input[type="number"] {
+    width: 50px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Cart styles */
+#cart {
+    margin-top: 20px;
+}
+
+/* Cart item styles */
+.cart-item {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Total price styles */
+#total-price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
