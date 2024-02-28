@@ -1,3 +1,5 @@
+/* static/styles.css */
+
 /* Reset default browser styles */
 * {
     margin: 0;
@@ -8,8 +10,8 @@
 /* Body styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     padding: 20px;
+    background-color: #bf8f44; /* Background color */
 }
 
 /* Header styles */
