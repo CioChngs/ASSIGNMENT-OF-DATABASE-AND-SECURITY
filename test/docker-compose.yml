@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Qwer*1234
+      MYSQL_DATABASE: coffee_shop
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Qwer*1234
