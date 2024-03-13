@@ -1,14 +1,27 @@
 <?php
 require 'database.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->prepare("INSERT INTO customers (username, email, password) VALUES (:username, :email, :password)");
-    $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password]);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone']; 
+        $password = $_POST['password']; 
 
-    echo "User registered successfully!";
+        $stmt = $pdo->prepare("INSERT INTO Customer (username, email, phone_number, password) VALUES (:username, :email, :phone, :password)");
+
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        echo "User registered successfully!";
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 ?>

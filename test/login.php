@@ -2,17 +2,28 @@
 require 'database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM customers WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch();
+    try {
+        $stmt = $pdo->prepare("SELECT password FROM Customer WHERE username = :username");
+        $stmt->execute(['username' => $username]);
+        $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['password'])) {
-        echo "Login successful!";
-    } else {
-        echo "Invalid email or password";
+        if ($user) {
+            if ($password === $user['password']) {
+                session_start();
+                $_SESSION['username'] = $username;
+                header("Location: order.html");
+                exit();
+            } else {
+                echo "Invalid password";
+            }
+        } else {
+            echo "Invalid username";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>
